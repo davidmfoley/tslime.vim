@@ -3,9 +3,7 @@ function! Send_to_Tmux(text)
     if exists("g:tmux_sessionname") && exists("g:tmux_windowname")
       let b:tmux_sessionname = g:tmux_sessionname
       let b:tmux_windowname = g:tmux_windowname
-      if exists("g:tmux_panenumber")
-        let b:tmux_panenumber = g:tmux_panenumber
-      end
+      let b:tmux_panenumber = g:tmux_panenumber
     else
       call Tmux_Vars()
     end
@@ -43,15 +41,13 @@ function! Tmux_Vars()
   if !exists("g:tmux_sessionname") || !exists("g:tmux_windowname")
     let g:tmux_sessionname = b:tmux_sessionname
     let g:tmux_windowname = b:tmux_windowname
-    if exists("b:tmux_panenumber")
-      let g:tmux_panenumber = b:tmux_panenumber
-    end
+    let g:tmux_panenumber = b:tmux_panenumber
   end
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-vmap <C-c><C-c> "ry :call Send_to_Tmux(@r)<CR>
-nmap <C-c><C-c> vip<C-c><C-c>
+"vmap <C-c><C-c> "ry :call Send_to_Tmux(@r)<CR>
+"nmap <C-c><C-c> vip<C-c><C-c>
+"nmap <C-c>v :call Tmux_Vars()<CR>
 
-nmap <C-c>v :call Tmux_Vars()<CR>
