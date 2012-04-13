@@ -1,19 +1,25 @@
-This is a mirror of http://www.vim.org/scripts/script.php?script_id=3023
 
 Simple script which allow you to send portion of a buffer to a running tmux session.
 
-Based on http://technotales.wordpress.com/2007/10/03/like-slime-for-vim/ which use screen instead of tmux. 
-                                                                                                              
-_How to use this script:_ 
-  - Considering you have a running Ruby/Python/Clojure/Whatever interpreter in    window 0 of a tmux session named 'my-session'. 
+_How to use this script:_
+  - map key shortcuts
+    " send to tmux
+    vmap <leader>ee "ry :call Send_to_Tmux(@r)<CR>
+    nmap <leader>ee vip<,e>
 
-  - In vim, select a region in visual mode and press <C-c><C-c>. 
+    " change tmux pane settings
+    nmap <leader>es :call Tmux_Vars()<CR>
 
-  - You will be prompt to enter the session name.  You can type the name of the session directly, in this case 'my-session', or you can press <tab> to  cycle through all the tmux sessions that are currently running. 
+  - In vim, select a region in visual mode and press <leader>ee (or whatever you have mapped)
 
-  - Next, you will be prompt for the window number, in this case 0. Like for session name, completion is available. 
+  - You will be prompted to enter the session name.  You can type the name of the session directly, in this case 'my-session', or you can press <tab> to  cycle through all the tmux sessions that are currently running.
 
-  - When you'll press enter, the text you selected will be send to your  interpreter. 
+  - Next, you will be prompted for the window number, in this case 0. Like for session name, completion is available.
 
-Current limitation: 
-    - The text will always be send to the first pane of the tmux window as tmux doesn't have a way to know which pane you want to paste to. This is only the case for version of tmux <= 1.2 and not for the version in the cvs. 
+  - Next, you will be prompted for the pane number, in this case 0. Completion is available.
+
+  - Once you have selected the session/window/pane once, the settings are remembered for the rest of your vim session.
+
+  - When you'll press enter, the text you selected will be send to your interpreter.
+
+
