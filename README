@@ -1,8 +1,13 @@
 
 Simple script which allow you to send portion of a buffer to a running tmux session.
 
+homepage: https://github.com/davidmfoley/tslime.vim
+forked from: https://github.com/kikijump/tslime.vim
+
+Compatility: This is tested with tmux 1.6 on OSX. It probably works with other environments as well.
+
 _How to use this script:_
-  - map key shortcuts
+  - map key shortcuts for Send_to_Tmux and Tmux_Vars functions
     " send to tmux
     vmap <leader>ee "ry :call Send_to_Tmux(@r)<CR>
     nmap <leader>ee vip<,e>
@@ -12,14 +17,15 @@ _How to use this script:_
 
   - In vim, select a region in visual mode and press <leader>ee (or whatever you have mapped)
 
-  - You will be prompted to enter the session name.  You can type the name of the session directly, in this case 'my-session', or you can press <tab> to  cycle through all the tmux sessions that are currently running.
+  - The first time you run Send_to_Tmux in a given seesion, it will ask you for the tmux destination pane:
 
-  - Next, you will be prompted for the window number, in this case 0. Like for session name, completion is available.
+    - You will be prompted to enter the session name.  You can type the name of the session directly, in this case 'my-session', or you can press <tab> to  cycle through all the tmux sessions that are currently running.
 
-  - Next, you will be prompted for the pane number, in this case 0. Completion is available.
+    - Next, you will be prompted for the window number, in this case 0. Like for session name, completion is available.
 
-  - Once you have selected the session/window/pane once, the settings are remembered for the rest of your vim session.
+    - Next, you will be prompted for the pane number, in this case 0. Completion is available.
 
-  - When you'll press enter, the text you selected will be send to your interpreter.
+    - Once you have selected the session/window/pane once, the settings are remembered for the rest of your vim session.
 
+    - The Tmux_Vars function allows changing these settings manually
 
